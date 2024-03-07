@@ -31,14 +31,15 @@ module.exports = {
     res.json(items[0])
   },
   create: async (req, res, next) => {
-    const { title, price, text } = req.body
+    const { title, price, text, phone } = req.body
 
-    const sql = `INSERT INTO advertisement (title, price, text) VALUES (?,?,?)`
+    const sql = `INSERT INTO advertisement (title, price, text, phone) VALUES (?,?,?,?)`
 
     const [responseObject, error] = await executeQuery(sql, [
       title,
       price,
       text,
+      phone,
     ])
 
     if (error) {
@@ -57,14 +58,15 @@ module.exports = {
   update: async (req, res, next) => {
     const { id } = req.params
 
-    const { title, price, text } = req.body
+    const { title, price, text, phone } = req.body
 
-    const sql = `UPDATE advertisement SET title=?, price=?, text=? WHERE id=?`
+    const sql = `UPDATE advertisement SET title=?, price=?, text=?, phone=? WHERE id=?`
 
     const [responseObject, error] = await executeQuery(sql, [
       title,
       price,
       text,
+      phone,
       id,
     ])
 
