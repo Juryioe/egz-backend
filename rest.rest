@@ -1,3 +1,64 @@
-### main page
+### Check main page
+GET http://localhost:3002/
 
-GET http://localhost:3000/
+
+### Check DB connection
+GET http://localhost:3002/test-connection
+
+
+### Get all advertisements
+GET http://localhost:3002/api/advertisement
+
+
+### Get single advertisement
+GET http://localhost:3002/api/advertisement/1
+
+
+### POST create advertisement
+POST http://localhost:3002/api/advertisement/
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInVzZXIiOnsiaWQiOjMsImVtYWlsIjoidmFpZG90YXNzQGdtYWlsLmNvbSIsInNjb3BlIjoiYWRtaW4ifSwiaWF0IjoxNzA2Njk0Nzk1LCJleHAiOjE3MDY2OTgzOTV9.BD2kjX7565ZsPEIclVXOPe0PxuVFhzFjIq0dJSJf21c
+
+{
+  "title": "Dviratis",
+  "price": "120",
+  "text": "Kalnu dviratis"
+}
+
+### Update single advertisement
+PUT http://localhost:3002/api/advertisement/1
+Content-Type: application/json
+
+{
+  "title": "Dviratis",
+  "price": "120",
+  "text": "Kalnu dviratis"
+}
+
+### DELETE single advertisement
+DELETE http://localhost:3002/api/advertisement/5
+
+### POST Register User
+POST http://localhost:3002/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "e.jurgelevicius@gmail.com",
+  "password": "123456"
+}
+
+
+### POST Login User
+POST http://localhost:3002/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "e.jurgelevicius@gmail.com",
+  "password": "123456"
+}
+
+
+### GET User List
+GET http://localhost:3002/api/user
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInVzZXIiOnsiaWQiOjMsImVtYWlsIjoidmFpZG90YXNzQGdtYWlsLmNvbSIsInNjb3BlIjoiYWRtaW4ifSwiaWF0IjoxNzA2Nzc3MDI5LCJleHAiOjE3MDY3ODA2Mjl9.7O2oHD_D04ZbTljT17xR_0PpOGGXRWbD7PP_5ZFv5ms

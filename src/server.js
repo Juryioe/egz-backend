@@ -3,7 +3,7 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const { mainErrorHandler, validateJWTToken } = require('./middleware')
-const studentRouter = require('./routes/studentRoutes')
+const adRouter = require('./routes/adRoutes')
 const authRouter = require('./routes/authRoutes')
 const userRouter = require('./routes/userRoutes')
 
@@ -13,7 +13,7 @@ const app = express()
 
 const port = process.env.PORT || 3000
 
-// Middlewares
+// Middlewares express, morgan, cors
 app.use(express.json())
 app.use(morgan('dev'))
 app.use(cors())
@@ -25,15 +25,15 @@ app.get('/', (req, res) => {
 })
 
 // Isidedame routus is router failu
-app.use('/api', studentRouter)
+app.use('/api', adRouter)
 app.use('/api', authRouter)
 app.use('/api', validateJWTToken, userRouter)
 
 app.get('/test-connection', async (req, res) => {
-  const sql = 'SELECT * FROM student'
-  const [students, error] = await executeQuery(sql)
+  const sql = 'SELECT * FROM advertisement'
+  const [advertisement, error] = await executeQuery(sql)
 
-  res.json(students)
+  res.json(advertisement)
 })
 
 app.use(mainErrorHandler)
