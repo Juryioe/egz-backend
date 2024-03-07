@@ -5,7 +5,6 @@ const cors = require('cors')
 const { mainErrorHandler, validateJWTToken } = require('./middleware')
 const adRouter = require('./routes/adRoutes')
 const authRouter = require('./routes/authRoutes')
-const userRouter = require('./routes/userRoutes')
 
 const { executeQuery } = require('./helpers')
 
@@ -27,7 +26,6 @@ app.get('/', (req, res) => {
 // Isidedame routus is router failu
 app.use('/api', adRouter)
 app.use('/api', authRouter)
-app.use('/api', validateJWTToken, userRouter)
 
 app.get('/test-connection', async (req, res) => {
   const sql = 'SELECT * FROM advertisement'
